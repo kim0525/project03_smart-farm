@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Smart Farm</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet&display=swap" rel="stylesheet">
+
+<style>
+* {
+  font-family: 'Do Hyeon', sans-serif;
+  
+ 
+    box-sizing: border-box;
+}
+
+@font-face {    /*복사한 폰트 코드 스타일 태그 안에 넣기*/
+  font-family: 'ROKAFSlabSerifBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSlabSerifBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.sampleA{
+      font-family: 'ROKAFSlabSerifBold';  /**/
+}
+
+
+
+
+
+neonText {
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+}
+
+h1 {
+  font-size: 4.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;    
+  animation:  pulsate 0.21s ease-in-out infinite alternate;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}
+
+@keyframes pulsate { 100% 
+  {/* Larger blur radius */ text-shadow: 
+  0 0 4px #fff, 0 0 11px #fff, 
+  0 0 19px #fff, 0 0 40px #0fa, 
+  0 0 80px #0fa, 0 0 90px #0fa, 
+  0 0 100px #0fa, 0 0 150px #0fa; }
+  0% 
+  { /* Smaller blur radius */ 
+    text-shadow: 0 0 2px #fff, 
+    0 0 4px #fff, 0 0 6px #fff, 
+    0 0 10px #0fa, 0 0 45px #0fa, 
+    0 0 55px #0fa, 0 0 70px #0fa, 0 0 80px #0fa; } }
+
+
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  height: 300px;
+  background-color:#009688;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 20%;
+  height: auto; /* only for demonstration, should be removed */
+  background: #FFFFFF;
+  padding: 35px;
+  text-align: center;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 10%;
+  width: 100%;
+  background-color: #ffffff;
+  height: auto; /* only for demonstration, should be removed */
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #1DE9B6; width: 150px;} /* Green */
+.button2 {background-color: #00acc1; font-size: 20px;} /* Blue */
+
+
+
+
+/* 성장과정  */
+div.gallery {
+  border: 1px solid #ccc;
+
+  /* 그림자 
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px; */
+}
+
+div.gallery:hover {
+  /* border: 1px solid #777; */
+  border: 2px solid #ffb74d;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  background-color: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <br>
+  <h1 class="neonText">Smart Farm</h1>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <img src="./img/temp.png" style="width:25px;height:30px;">
+      <br><br>
+      <table width = 100%; margin: auto border="0">
+        <tr align="center">
+          <td><p><h2 class = "sampleA">온도 :   </h2></p></td>
+          <td><h2 id="temp"></h2></td>
+          <td><h2 >℃</h2></td>
+        </tr>
+        <tr align="center"></tr>
+          <td><p><h2 class = "sampleA">습도 :      </h2></p></td>
+          <td><h2 id="humi"></h2></td>
+          <td><h2 class = "sampleA">%</h2></td>
+        </tr>
+        <tr align="center"></tr>
+          <td><p><h2 class = "sampleA">토양습도 : </h2></p></td>
+          <td><h2 id="mois"></h2></td>
+          <td><p>&nbsp;</p></td>
+        </tr>
+      </table>
+      <!-- <h3>습도 : </h3> <p id="humi"></p> <h3> % </h3>
+      <p></p>
+      <h3>온도 : </h3> <p id="temp"></p> <h3>℃ </h3>
+      <h3>토양 습도 : </h3> <p id="mois"></p> <h3> % </h3> -->
+    </ul>
+  </nav>
+  
+  <nav>
+    <ul>
+      <img src="./img/fan.png" style="width:30px;height:30px;">
+      <h2 class = "sampleA">환기</h2>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">FAN ON</button>
+      <br>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">FAN OFF</button>
+    </ul>
+  </nav>
+
+  <nav>
+    <ul>
+      <img src="./img/window.png" style="width:30px;height:30px;">
+      <h2 class = "sampleA">셔터</h2>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">Position 1</button>
+      <br>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">Position 2</button>
+      <br>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">Position 3</button>
+    </ul>
+  </nav>
+  
+  <nav>
+    <ul>
+      <img src="./img/humi.png" style="width:15px;height:30px;">
+      <h2 class = "sampleA">급수</h2>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">물 주기</button>
+    </ul>
+  </nav>
+  
+  <nav>
+    <ul>
+      <img src="./img/led.png" style="width:30px;height:30px;">
+      <h2 class = "sampleA">LED</h2>
+      <!--
+      <button class="button button1" type="button" onclick="alert('Hello world!')">ON</button>
+      <button class="button button1" type="button" onclick="alert('Hello world!')">OFF</button>
+      -->    
+      
+      <a href="/led_on"  target="response" class="button button1"> ON</a> 
+      <br>
+      <a href="/led_off" target="response" class="button button1"> OFF</a>
+      </br></br>
+      
+      <table border="0">
+        <tr>
+          <td rowspan="2">Status Message: </br> &nbsp;</br> &nbsp;</td>
+          <td>
+            <iframe src="about:blank" width="129" height="35" frameborder="0"
+            marginwidth="0" marginheight="0" scrolling="no" name="response"></iframe>
+            <p></p>
+          </td>
+        </tr>
+        <tr>
+          <td> &nbsp;</td>
+        </tr>
+      </table>
+    </ul>
+  </nav>
+
+
+  <hr>
+  <article>
+    <!--
+    <h1></h1>
+    <br><br>
+    <button class="button button2" type="button" onclick="location.href='plant_growth.html'">성장과정 보러가기</button>
+    <br><br><br><br>
+    
+    <img src="./img/plant1.jpg" style="width:700px;height:400px;">  */
+    -->
+    
+    <h2 class = "sampleA">성장과정</h2>
+        <br><br>
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Cinque Terre" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Forest" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Northern Lights" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Mountains" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+        
+        <br>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Cinque Terre" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Forest" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Northern Lights" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="plant_img/01.jpg">
+              <img src="plant_img/01.jpg" alt="Mountains" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+          </div>
+        </div>
+
+
+        
+  </article>
+</section>
+
+<footer>
+  <p>by Team A</p>
+</footer>
+
+
+<script src="javascripts/jquery-1.12.4.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+    <!-- script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script -->
+    <script>
+      function led_on(){
+        document.getElementById("ld").src = "./images/onRed.gif";
+      }
+      
+      function led_off(){
+        document.getElementById("ld").src = "./images/offRed.gif";
+      }
+
+
+
+
+
+
+      $(document).ready(function()
+      {		
+        $('#fanOn').click(function() {
+          $.ajax({
+            url:'/fan_on',
+            success:function(data) {	
+              $('#fan_img').attr('src', './images/fan_on.gif');
+                        console.log(data);
+                    }
+          })
+        });
+          
+        $('#fanOff').click(function() {
+          $.ajax({
+            url:'/fan_off',
+            success:function(data) {
+              $('#fan_img').attr('src', './images/fan_off.gif');
+                        console.log(data);
+                    }
+          })
+        });
+                
+        $('#waterOn').click(function() {
+          $.ajax({
+            url:'/water_on',
+            success:function(data) {
+              $('#valve_img').attr('src', './images/valve_open.gif');
+                        console.log(data);
+                    }
+          })
+        });
+          
+        $('#waterOff').click(function() {
+          $.ajax({
+            url:'/water_off',
+            success:function(data) {
+              $('#valve_img').attr('src', './images/valve_closed.gif');
+                        console.log(data);
+                    }
+          })
+        });
+                
+        $('#vent0').click(function() {
+          $.ajax({
+            url:'/vent_pos0',
+            success:function(data) {
+              $('#vent_img').attr('src', './images/vent_closed.png');
+                        console.log(data);
+                    }
+          })
+        });
+        
+        $('#vent1').click(function() {
+          $.ajax({
+            url:'/vent_pos1',
+            success:function(data) {
+              $('#vent_img').attr('src', './images/vent_position1.png');
+                        console.log(data);
+                    }
+          })
+        });
+        
+        $('#vent2').click(function() {
+          $.ajax({
+            url:'/vent_pos2',
+            success:function(data) {
+              $('#vent_img').attr('src', './images/vent_position2.png');
+                        console.log(data);
+                    }
+          })
+        });
+          
+        $(function()
+        {
+          var socket = io();
+            
+          socket.on('temp', function( temperature ){
+            $('#temp').text(temperature);
+          });
+          
+          socket.on('humi', function( humidity ){
+            $('#humi').text(humidity);
+          });
+          
+          socket.on('mois', function( moisture ){
+            $('#mois').text(moisture);
+          });
+            
+          socket.on('fan', function( fanState ){
+            $('#fan').text(fanState);
+          });
+          
+          socket.on('valve', function( valveState ){
+            $('#valve').text(valveState);
+          });
+          
+          socket.on('vent', function( ventState ){
+            $('#vent').text(ventState);
+          });
+        });
+      });
+    
+    </script>
+
+
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang=ko>
+  <head>
+    <title>Control LED on Arduino</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+  </head>
+  
+
+
+  <body>
+    
+    </br>
+    &nbsp; &nbsp; <a href="/led_on"  target="response"> On</a> 
+    </br></br>
+    &nbsp; &nbsp; <a href="/led_off" target="response"> Off</a>
+    </br></br>
+    
+    <table border="0">
+      <tr>
+        <td rowspan="2">Status Message: </br> &nbsp;</br> &nbsp;</td>
+        <td>
+          <iframe src="about:blank" width="129" height="35" frameborder="0"
+          marginwidth="0" marginheight="0" scrolling="no" name="response"></iframe>
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td> &nbsp; aaaa</td>
+      </tr>
+    </table>
+    
+    <script src="javascripts/jquery-1.12.4.min.js"></script>
+
+    -->
+
+    <!-- script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script -->
+    
+    <!--
+    <script>
+      function led_on(){
+        document.getElementById("ld").src = "./images/onRed.gif";
+      }
+      
+      function led_off(){
+        document.getElementById("ld").src = "./images/offRed.gif";
+      }
+    </script>
+  </body>
+</html>
+-->
+
